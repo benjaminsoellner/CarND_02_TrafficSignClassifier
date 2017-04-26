@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <meta charset="utf-8" />
+      <title>writeup</title>
+      <style>.markdown-preview:not([data-use-github-style]) { padding: 2em; font-size: 1.2em; color: rgb(56, 58, 66); overflow: auto; background-color: rgb(250, 250, 250); }
+.markdown-preview:not([data-use-github-style]) > :first-child { margin-top: 0px; }
+.markdown-preview:not([data-use-github-style]) h1, .markdown-preview:not([data-use-github-style]) h2, .markdown-preview:not([data-use-github-style]) h3, .markdown-preview:not([data-use-github-style]) h4, .markdown-preview:not([data-use-github-style]) h5, .markdown-preview:not([data-use-github-style]) h6 { line-height: 1.2; margin-top: 1.5em; margin-bottom: 0.5em; color: rgb(0, 0, 0); }
+.markdown-preview:not([data-use-github-style]) h1 { font-size: 2.4em; font-weight: 300; }
+.markdown-preview:not([data-use-github-style]) h2 { font-size: 1.8em; font-weight: 400; }
+.markdown-preview:not([data-use-github-style]) h3 { font-size: 1.5em; font-weight: 500; }
+.markdown-preview:not([data-use-github-style]) h4 { font-size: 1.2em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h5 { font-size: 1.1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h6 { font-size: 1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) strong { color: rgb(0, 0, 0); }
+.markdown-preview:not([data-use-github-style]) del { color: rgb(94, 97, 110); }
+.markdown-preview:not([data-use-github-style]) a, .markdown-preview:not([data-use-github-style]) a code { color: rgb(82, 111, 255); }
+.markdown-preview:not([data-use-github-style]) img { max-width: 100%; }
+.markdown-preview:not([data-use-github-style]) > p { margin-top: 0px; margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) > ul, .markdown-preview:not([data-use-github-style]) > ol { margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) blockquote { margin: 1.5em 0px; font-size: inherit; color: rgb(94, 97, 110); border-color: rgb(209, 209, 210); border-width: 4px; }
+.markdown-preview:not([data-use-github-style]) hr { margin: 3em 0px; border-top-width: 2px; border-top-style: dashed; border-top-color: rgb(209, 209, 210); background: none; }
+.markdown-preview:not([data-use-github-style]) table { margin: 1.5em 0px; }
+.markdown-preview:not([data-use-github-style]) th { color: rgb(0, 0, 0); }
+.markdown-preview:not([data-use-github-style]) th, .markdown-preview:not([data-use-github-style]) td { padding: 0.66em 1em; border: 1px solid rgb(209, 209, 210); }
+.markdown-preview:not([data-use-github-style]) pre, .markdown-preview:not([data-use-github-style]) code { color: rgb(0, 0, 0); background-color: rgb(234, 234, 235); }
+.markdown-preview:not([data-use-github-style]) pre, .markdown-preview:not([data-use-github-style]) pre.editor-colors { margin: 1.5em 0px; padding: 1em; font-size: 0.92em; border-radius: 3px; background-color: rgb(240, 240, 240); }
+.markdown-preview:not([data-use-github-style]) kbd { color: rgb(0, 0, 0); border-width: 1px 1px 2px; border-style: solid; border-color: rgb(209, 209, 210) rgb(209, 209, 210) rgb(193, 193, 194); background-color: rgb(234, 234, 235); }
+.markdown-preview[data-use-github-style] { font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; line-height: 1.6; word-wrap: break-word; padding: 30px; font-size: 16px; color: rgb(51, 51, 51); overflow: scroll; background-color: rgb(255, 255, 255); }
+.markdown-preview[data-use-github-style] > :first-child { margin-top: 0px !important; }
+.markdown-preview[data-use-github-style] > :last-child { margin-bottom: 0px !important; }
+.markdown-preview[data-use-github-style] a:not([href]) { color: inherit; text-decoration: none; }
+.markdown-preview[data-use-github-style] .absent { color: rgb(204, 0, 0); }
+.markdown-preview[data-use-github-style] .anchor { position: absolute; top: 0px; left: 0px; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; }
+.markdown-preview[data-use-github-style] .anchor:focus { outline: none; }
+.markdown-preview[data-use-github-style] h1, .markdown-preview[data-use-github-style] h2, .markdown-preview[data-use-github-style] h3, .markdown-preview[data-use-github-style] h4, .markdown-preview[data-use-github-style] h5, .markdown-preview[data-use-github-style] h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; }
+.markdown-preview[data-use-github-style] h1 .octicon-link, .markdown-preview[data-use-github-style] h2 .octicon-link, .markdown-preview[data-use-github-style] h3 .octicon-link, .markdown-preview[data-use-github-style] h4 .octicon-link, .markdown-preview[data-use-github-style] h5 .octicon-link, .markdown-preview[data-use-github-style] h6 .octicon-link { display: none; color: rgb(0, 0, 0); vertical-align: middle; }
+.markdown-preview[data-use-github-style] h1:hover .anchor, .markdown-preview[data-use-github-style] h2:hover .anchor, .markdown-preview[data-use-github-style] h3:hover .anchor, .markdown-preview[data-use-github-style] h4:hover .anchor, .markdown-preview[data-use-github-style] h5:hover .anchor, .markdown-preview[data-use-github-style] h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; }
+.markdown-preview[data-use-github-style] h1:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h2:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h3:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h4:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h5:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h6:hover .anchor .octicon-link { display: inline-block; }
+.markdown-preview[data-use-github-style] h1 tt, .markdown-preview[data-use-github-style] h2 tt, .markdown-preview[data-use-github-style] h3 tt, .markdown-preview[data-use-github-style] h4 tt, .markdown-preview[data-use-github-style] h5 tt, .markdown-preview[data-use-github-style] h6 tt, .markdown-preview[data-use-github-style] h1 code, .markdown-preview[data-use-github-style] h2 code, .markdown-preview[data-use-github-style] h3 code, .markdown-preview[data-use-github-style] h4 code, .markdown-preview[data-use-github-style] h5 code, .markdown-preview[data-use-github-style] h6 code { font-size: inherit; }
+.markdown-preview[data-use-github-style] h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h1 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h2 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h3 { font-size: 1.5em; line-height: 1.43; }
+.markdown-preview[data-use-github-style] h3 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h4 { font-size: 1.25em; }
+.markdown-preview[data-use-github-style] h4 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h5 { font-size: 1em; }
+.markdown-preview[data-use-github-style] h5 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] h6 { font-size: 1em; color: rgb(119, 119, 119); }
+.markdown-preview[data-use-github-style] h6 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] p, .markdown-preview[data-use-github-style] blockquote, .markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol, .markdown-preview[data-use-github-style] dl, .markdown-preview[data-use-github-style] table, .markdown-preview[data-use-github-style] pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] hr { height: 4px; padding: 0px; margin: 16px 0px; border: 0px none; background-color: rgb(231, 231, 231); }
+.markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol { padding-left: 2em; }
+.markdown-preview[data-use-github-style] ul.no-list, .markdown-preview[data-use-github-style] ol.no-list { padding: 0px; list-style-type: none; }
+.markdown-preview[data-use-github-style] ul ul, .markdown-preview[data-use-github-style] ul ol, .markdown-preview[data-use-github-style] ol ol, .markdown-preview[data-use-github-style] ol ul { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] li > p { margin-top: 16px; }
+.markdown-preview[data-use-github-style] dl { padding: 0px; }
+.markdown-preview[data-use-github-style] dl dt { padding: 0px; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; }
+.markdown-preview[data-use-github-style] dl dd { padding: 0px 16px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] blockquote { padding: 0px 15px; color: rgb(119, 119, 119); border-left-width: 4px; border-left-style: solid; border-left-color: rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] blockquote > :first-child { margin-top: 0px; }
+.markdown-preview[data-use-github-style] blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] table { display: block; width: 100%; overflow: auto; word-break: keep-all; }
+.markdown-preview[data-use-github-style] table th { font-weight: bold; }
+.markdown-preview[data-use-github-style] table th, .markdown-preview[data-use-github-style] table td { padding: 6px 13px; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] table tr { border-top-width: 1px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); }
+.markdown-preview[data-use-github-style] table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
+.markdown-preview[data-use-github-style] img { max-width: 100%; box-sizing: border-box; }
+.markdown-preview[data-use-github-style] .emoji { max-width: none; }
+.markdown-preview[data-use-github-style] span.frame { display: block; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.frame > span { display: block; float: left; width: auto; padding: 7px; margin: 13px 0px 0px; overflow: hidden; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] span.frame span img { display: block; float: left; }
+.markdown-preview[data-use-github-style] span.frame span span { display: block; padding: 5px 0px 0px; clear: both; color: rgb(51, 51, 51); }
+.markdown-preview[data-use-github-style] span.align-center { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-center > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-center span img { margin: 0px auto; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-right { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-right > span { display: block; margin: 13px 0px 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] span.align-right span img { margin: 0px; text-align: right; }
+.markdown-preview[data-use-github-style] span.float-left { display: block; float: left; margin-right: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-left span { margin: 13px 0px 0px; }
+.markdown-preview[data-use-github-style] span.float-right { display: block; float: right; margin-left: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-right > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] code, .markdown-preview[data-use-github-style] tt { padding: 0.2em 0px; margin: 0px; font-size: 85%; border-radius: 3px; background-color: rgba(0, 0, 0, 0.0392157); }
+.markdown-preview[data-use-github-style] code::before, .markdown-preview[data-use-github-style] tt::before, .markdown-preview[data-use-github-style] code::after, .markdown-preview[data-use-github-style] tt::after { letter-spacing: -0.2em; content: " "; }
+.markdown-preview[data-use-github-style] code br, .markdown-preview[data-use-github-style] tt br { display: none; }
+.markdown-preview[data-use-github-style] del code { text-decoration: inherit; }
+.markdown-preview[data-use-github-style] pre > code { padding: 0px; margin: 0px; font-size: 100%; word-break: normal; white-space: pre; border: 0px; background: transparent; }
+.markdown-preview[data-use-github-style] .highlight { margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] .highlight pre, .markdown-preview[data-use-github-style] pre { padding: 16px; overflow: auto; font-size: 85%; line-height: 1.45; border-radius: 3px; background-color: rgb(247, 247, 247); }
+.markdown-preview[data-use-github-style] .highlight pre { margin-bottom: 0px; word-break: normal; }
+.markdown-preview[data-use-github-style] pre { word-wrap: normal; }
+.markdown-preview[data-use-github-style] pre code, .markdown-preview[data-use-github-style] pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; border: 0px; background-color: transparent; }
+.markdown-preview[data-use-github-style] pre code::before, .markdown-preview[data-use-github-style] pre tt::before, .markdown-preview[data-use-github-style] pre code::after, .markdown-preview[data-use-github-style] pre tt::after { content: normal; }
+.markdown-preview[data-use-github-style] kbd { display: inline-block; padding: 3px 5px; font-size: 11px; line-height: 10px; color: rgb(85, 85, 85); vertical-align: middle; border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; background-color: rgb(252, 252, 252); }
+.markdown-preview[data-use-github-style] a { color: rgb(51, 122, 183); }
+.markdown-preview[data-use-github-style] pre, .markdown-preview[data-use-github-style] code { color: inherit; }
+.markdown-preview[data-use-github-style] pre, .markdown-preview[data-use-github-style] pre.editor-colors { padding: 0.8em 1em; margin-bottom: 1em; font-size: 0.85em; border-radius: 4px; overflow: auto; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors::shadow .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors::shadow .horizontal-scrollbar { visibility: hidden; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors:hover::shadow .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors:hover::shadow .horizontal-scrollbar { visibility: visible; }
+.markdown-preview del { text-decoration: none; position: relative; }
+.markdown-preview del::after { border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: black; content: ""; left: 0px; position: absolute; right: 0px; top: 50%; }
+.markdown-preview .flash { animation: flash 1s ease-out 1; outline: rgba(255, 0, 0, 0) solid 1px; }
+.markdown-preview .flash:not(li) { display: block; }
+.markdown-preview:not([data-use-github-style]) { padding: 2em; font-size: 1.2em; color: rgb(56, 58, 66); overflow: auto; background-color: rgb(250, 250, 250); }
+.markdown-preview:not([data-use-github-style]) > :first-child { margin-top: 0px; }
+.markdown-preview:not([data-use-github-style]) h1, .markdown-preview:not([data-use-github-style]) h2, .markdown-preview:not([data-use-github-style]) h3, .markdown-preview:not([data-use-github-style]) h4, .markdown-preview:not([data-use-github-style]) h5, .markdown-preview:not([data-use-github-style]) h6 { line-height: 1.2; margin-top: 1.5em; margin-bottom: 0.5em; color: rgb(0, 0, 0); }
+.markdown-preview:not([data-use-github-style]) h1 { font-size: 2.4em; font-weight: 300; }
+.markdown-preview:not([data-use-github-style]) h2 { font-size: 1.8em; font-weight: 400; }
+.markdown-preview:not([data-use-github-style]) h3 { font-size: 1.5em; font-weight: 500; }
+.markdown-preview:not([data-use-github-style]) h4 { font-size: 1.2em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h5 { font-size: 1.1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) h6 { font-size: 1em; font-weight: 600; }
+.markdown-preview:not([data-use-github-style]) strong { color: rgb(0, 0, 0); }
+.markdown-preview:not([data-use-github-style]) del { color: rgb(94, 97, 110); }
+.markdown-preview:not([data-use-github-style]) a, .markdown-preview:not([data-use-github-style]) a code { color: rgb(82, 111, 255); }
+.markdown-preview:not([data-use-github-style]) img { max-width: 100%; }
+.markdown-preview:not([data-use-github-style]) > p { margin-top: 0px; margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) > ul, .markdown-preview:not([data-use-github-style]) > ol { margin-bottom: 1.5em; }
+.markdown-preview:not([data-use-github-style]) blockquote { margin: 1.5em 0px; font-size: inherit; color: rgb(94, 97, 110); border-color: rgb(209, 209, 210); border-width: 4px; }
+.markdown-preview:not([data-use-github-style]) hr { margin: 3em 0px; border-top-width: 2px; border-top-style: dashed; border-top-color: rgb(209, 209, 210); background: none; }
+.markdown-preview:not([data-use-github-style]) table { margin: 1.5em 0px; }
+.markdown-preview:not([data-use-github-style]) th { color: rgb(0, 0, 0); }
+.markdown-preview:not([data-use-github-style]) th, .markdown-preview:not([data-use-github-style]) td { padding: 0.66em 1em; border: 1px solid rgb(209, 209, 210); }
+.markdown-preview:not([data-use-github-style]) code { color: rgb(0, 0, 0); background-color: rgb(234, 234, 235); }
+.markdown-preview:not([data-use-github-style]) pre.editor-colors { margin: 1.5em 0px; padding: 1em; font-size: 0.92em; border-radius: 3px; background-color: rgb(240, 240, 240); }
+.markdown-preview:not([data-use-github-style]) kbd { color: rgb(0, 0, 0); border-width: 1px 1px 2px; border-style: solid; border-color: rgb(209, 209, 210) rgb(209, 209, 210) rgb(193, 193, 194); background-color: rgb(234, 234, 235); }
+.markdown-preview[data-use-github-style] { font-family: 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, freesans, sans-serif; line-height: 1.6; word-wrap: break-word; padding: 30px; font-size: 16px; color: rgb(51, 51, 51); overflow: scroll; background-color: rgb(255, 255, 255); }
+.markdown-preview[data-use-github-style] > :first-child { margin-top: 0px !important; }
+.markdown-preview[data-use-github-style] > :last-child { margin-bottom: 0px !important; }
+.markdown-preview[data-use-github-style] a:not([href]) { color: inherit; text-decoration: none; }
+.markdown-preview[data-use-github-style] .absent { color: rgb(204, 0, 0); }
+.markdown-preview[data-use-github-style] .anchor { position: absolute; top: 0px; left: 0px; display: block; padding-right: 6px; padding-left: 30px; margin-left: -30px; }
+.markdown-preview[data-use-github-style] .anchor:focus { outline: none; }
+.markdown-preview[data-use-github-style] h1, .markdown-preview[data-use-github-style] h2, .markdown-preview[data-use-github-style] h3, .markdown-preview[data-use-github-style] h4, .markdown-preview[data-use-github-style] h5, .markdown-preview[data-use-github-style] h6 { position: relative; margin-top: 1em; margin-bottom: 16px; font-weight: bold; line-height: 1.4; }
+.markdown-preview[data-use-github-style] h1 .octicon-link, .markdown-preview[data-use-github-style] h2 .octicon-link, .markdown-preview[data-use-github-style] h3 .octicon-link, .markdown-preview[data-use-github-style] h4 .octicon-link, .markdown-preview[data-use-github-style] h5 .octicon-link, .markdown-preview[data-use-github-style] h6 .octicon-link { display: none; color: rgb(0, 0, 0); vertical-align: middle; }
+.markdown-preview[data-use-github-style] h1:hover .anchor, .markdown-preview[data-use-github-style] h2:hover .anchor, .markdown-preview[data-use-github-style] h3:hover .anchor, .markdown-preview[data-use-github-style] h4:hover .anchor, .markdown-preview[data-use-github-style] h5:hover .anchor, .markdown-preview[data-use-github-style] h6:hover .anchor { padding-left: 8px; margin-left: -30px; text-decoration: none; }
+.markdown-preview[data-use-github-style] h1:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h2:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h3:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h4:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h5:hover .anchor .octicon-link, .markdown-preview[data-use-github-style] h6:hover .anchor .octicon-link { display: inline-block; }
+.markdown-preview[data-use-github-style] h1 tt, .markdown-preview[data-use-github-style] h2 tt, .markdown-preview[data-use-github-style] h3 tt, .markdown-preview[data-use-github-style] h4 tt, .markdown-preview[data-use-github-style] h5 tt, .markdown-preview[data-use-github-style] h6 tt, .markdown-preview[data-use-github-style] h1 code, .markdown-preview[data-use-github-style] h2 code, .markdown-preview[data-use-github-style] h3 code, .markdown-preview[data-use-github-style] h4 code, .markdown-preview[data-use-github-style] h5 code, .markdown-preview[data-use-github-style] h6 code { font-size: inherit; }
+.markdown-preview[data-use-github-style] h1 { padding-bottom: 0.3em; font-size: 2.25em; line-height: 1.2; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h1 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h2 { padding-bottom: 0.3em; font-size: 1.75em; line-height: 1.225; border-bottom-width: 1px; border-bottom-style: solid; border-bottom-color: rgb(238, 238, 238); }
+.markdown-preview[data-use-github-style] h2 .anchor { line-height: 1; }
+.markdown-preview[data-use-github-style] h3 { font-size: 1.5em; line-height: 1.43; }
+.markdown-preview[data-use-github-style] h3 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h4 { font-size: 1.25em; }
+.markdown-preview[data-use-github-style] h4 .anchor { line-height: 1.2; }
+.markdown-preview[data-use-github-style] h5 { font-size: 1em; }
+.markdown-preview[data-use-github-style] h5 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] h6 { font-size: 1em; color: rgb(119, 119, 119); }
+.markdown-preview[data-use-github-style] h6 .anchor { line-height: 1.1; }
+.markdown-preview[data-use-github-style] p, .markdown-preview[data-use-github-style] blockquote, .markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol, .markdown-preview[data-use-github-style] dl, .markdown-preview[data-use-github-style] table, .markdown-preview[data-use-github-style] pre { margin-top: 0px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] hr { height: 4px; padding: 0px; margin: 16px 0px; border: 0px none; background-color: rgb(231, 231, 231); }
+.markdown-preview[data-use-github-style] ul, .markdown-preview[data-use-github-style] ol { padding-left: 2em; }
+.markdown-preview[data-use-github-style] ul.no-list, .markdown-preview[data-use-github-style] ol.no-list { padding: 0px; list-style-type: none; }
+.markdown-preview[data-use-github-style] ul ul, .markdown-preview[data-use-github-style] ul ol, .markdown-preview[data-use-github-style] ol ol, .markdown-preview[data-use-github-style] ol ul { margin-top: 0px; margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] li > p { margin-top: 16px; }
+.markdown-preview[data-use-github-style] dl { padding: 0px; }
+.markdown-preview[data-use-github-style] dl dt { padding: 0px; margin-top: 16px; font-size: 1em; font-style: italic; font-weight: bold; }
+.markdown-preview[data-use-github-style] dl dd { padding: 0px 16px; margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] blockquote { padding: 0px 15px; color: rgb(119, 119, 119); border-left-width: 4px; border-left-style: solid; border-left-color: rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] blockquote > :first-child { margin-top: 0px; }
+.markdown-preview[data-use-github-style] blockquote > :last-child { margin-bottom: 0px; }
+.markdown-preview[data-use-github-style] table { display: block; width: 100%; overflow: auto; word-break: keep-all; }
+.markdown-preview[data-use-github-style] table th { font-weight: bold; }
+.markdown-preview[data-use-github-style] table th, .markdown-preview[data-use-github-style] table td { padding: 6px 13px; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] table tr { border-top-width: 1px; border-top-style: solid; border-top-color: rgb(204, 204, 204); background-color: rgb(255, 255, 255); }
+.markdown-preview[data-use-github-style] table tr:nth-child(2n) { background-color: rgb(248, 248, 248); }
+.markdown-preview[data-use-github-style] img { max-width: 100%; box-sizing: border-box; }
+.markdown-preview[data-use-github-style] .emoji { max-width: none; }
+.markdown-preview[data-use-github-style] span.frame { display: block; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.frame > span { display: block; float: left; width: auto; padding: 7px; margin: 13px 0px 0px; overflow: hidden; border: 1px solid rgb(221, 221, 221); }
+.markdown-preview[data-use-github-style] span.frame span img { display: block; float: left; }
+.markdown-preview[data-use-github-style] span.frame span span { display: block; padding: 5px 0px 0px; clear: both; color: rgb(51, 51, 51); }
+.markdown-preview[data-use-github-style] span.align-center { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-center > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-center span img { margin: 0px auto; text-align: center; }
+.markdown-preview[data-use-github-style] span.align-right { display: block; overflow: hidden; clear: both; }
+.markdown-preview[data-use-github-style] span.align-right > span { display: block; margin: 13px 0px 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] span.align-right span img { margin: 0px; text-align: right; }
+.markdown-preview[data-use-github-style] span.float-left { display: block; float: left; margin-right: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-left span { margin: 13px 0px 0px; }
+.markdown-preview[data-use-github-style] span.float-right { display: block; float: right; margin-left: 13px; overflow: hidden; }
+.markdown-preview[data-use-github-style] span.float-right > span { display: block; margin: 13px auto 0px; overflow: hidden; text-align: right; }
+.markdown-preview[data-use-github-style] code, .markdown-preview[data-use-github-style] tt { padding: 0.2em 0px; margin: 0px; font-size: 85%; border-radius: 3px; background-color: rgba(0, 0, 0, 0.0392157); }
+.markdown-preview[data-use-github-style] code::before, .markdown-preview[data-use-github-style] tt::before, .markdown-preview[data-use-github-style] code::after, .markdown-preview[data-use-github-style] tt::after { letter-spacing: -0.2em; content: " "; }
+.markdown-preview[data-use-github-style] code br, .markdown-preview[data-use-github-style] tt br { display: none; }
+.markdown-preview[data-use-github-style] del code { text-decoration: inherit; }
+.markdown-preview[data-use-github-style] pre > code { padding: 0px; margin: 0px; font-size: 100%; word-break: normal; white-space: pre; border: 0px; background: transparent; }
+.markdown-preview[data-use-github-style] .highlight { margin-bottom: 16px; }
+.markdown-preview[data-use-github-style] .highlight pre, .markdown-preview[data-use-github-style] pre { padding: 16px; overflow: auto; font-size: 85%; line-height: 1.45; border-radius: 3px; background-color: rgb(247, 247, 247); }
+.markdown-preview[data-use-github-style] .highlight pre { margin-bottom: 0px; word-break: normal; }
+.markdown-preview[data-use-github-style] pre { word-wrap: normal; }
+.markdown-preview[data-use-github-style] pre code, .markdown-preview[data-use-github-style] pre tt { display: inline; max-width: initial; padding: 0px; margin: 0px; overflow: initial; line-height: inherit; word-wrap: normal; border: 0px; background-color: transparent; }
+.markdown-preview[data-use-github-style] pre code::before, .markdown-preview[data-use-github-style] pre tt::before, .markdown-preview[data-use-github-style] pre code::after, .markdown-preview[data-use-github-style] pre tt::after { content: normal; }
+.markdown-preview[data-use-github-style] kbd { display: inline-block; padding: 3px 5px; font-size: 11px; line-height: 10px; color: rgb(85, 85, 85); vertical-align: middle; border-style: solid; border-width: 1px; border-color: rgb(204, 204, 204) rgb(204, 204, 204) rgb(187, 187, 187); border-radius: 3px; box-shadow: rgb(187, 187, 187) 0px -1px 0px inset; background-color: rgb(252, 252, 252); }
+.markdown-preview[data-use-github-style] a { color: rgb(51, 122, 183); }
+.markdown-preview[data-use-github-style] code { color: inherit; }
+.markdown-preview[data-use-github-style] pre.editor-colors { padding: 0.8em 1em; margin-bottom: 1em; font-size: 0.85em; border-radius: 4px; overflow: auto; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors::shadow .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors::shadow .horizontal-scrollbar { visibility: hidden; }
+.scrollbars-visible-always .markdown-preview pre.editor-colors:hover::shadow .vertical-scrollbar, .scrollbars-visible-always .markdown-preview pre.editor-colors:hover::shadow .horizontal-scrollbar { visibility: visible; }
+.bracket-matcher .region {
+  border-bottom: 1px dotted lime;
+  position: absolute;
+}
+
+.spell-check-misspelling .region {
+  border-bottom: 2px dotted rgba(255, 51, 51, 0.75);
+}
+
+pre.editor-colors,
+.host {
+  background-color: #fafafa;
+  color: #383a42;
+}
+pre.editor-colors .line.cursor-line,
+.host .line.cursor-line {
+  background-color: rgba(56, 58, 66, 0.04);
+}
+pre.editor-colors .invisible,
+.host .invisible {
+  color: #383a42;
+}
+pre.editor-colors .cursor,
+.host .cursor {
+  border-left: 2px solid #526fff;
+}
+pre.editor-colors .selection .region,
+.host .selection .region {
+  background-color: #ededed;
+}
+pre.editor-colors .bracket-matcher .region,
+.host .bracket-matcher .region {
+  border-bottom: 1px solid #526fff;
+  box-sizing: border-box;
+}
+pre.editor-colors .invisible-character,
+.host .invisible-character {
+  color: rgba(56, 58, 66, 0.2);
+}
+pre.editor-colors .indent-guide,
+.host .indent-guide {
+  color: rgba(56, 58, 66, 0.2);
+}
+pre.editor-colors .wrap-guide,
+.host .wrap-guide {
+  background-color: rgba(56, 58, 66, 0.2);
+}
+pre.editor-colors .gutter .line-number,
+.host .gutter .line-number {
+  color: #9d9d9f;
+  -webkit-font-smoothing: antialiased;
+}
+pre.editor-colors .gutter .line-number.cursor-line,
+.host .gutter .line-number.cursor-line {
+  color: #383a42;
+  background-color: #f2f2f2;
+}
+pre.editor-colors .gutter .line-number.cursor-line-no-selection,
+.host .gutter .line-number.cursor-line-no-selection {
+  background-color: transparent;
+}
+pre.editor-colors .gutter .line-number .icon-right,
+.host .gutter .line-number .icon-right {
+  color: #383a42;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before,
+.host .gutter:not(.git-diff-icon) .line-number.git-line-removed.git-line-removed::before {
+  bottom: -3px;
+}
+pre.editor-colors .gutter:not(.git-diff-icon) .line-number.git-line-removed::after,
+.host .gutter:not(.git-diff-icon) .line-number.git-line-removed::after {
+  content: "";
+  position: absolute;
+  left: 0px;
+  bottom: 0px;
+  width: 25px;
+  border-bottom: 1px dotted rgba(255, 20, 20, 0.5);
+  pointer-events: none;
+}
+pre.editor-colors .gutter .line-number.folded,
+.host .gutter .line-number.folded,
+pre.editor-colors .gutter .line-number:after,
+.host .gutter .line-number:after,
+pre.editor-colors .fold-marker:after,
+.host .fold-marker:after {
+  color: #383a42;
+}
+.comment {
+  color: #a0a1a7;
+  font-style: italic;
+}
+.comment .markup.link {
+  color: #a0a1a7;
+}
+.entity.name.type {
+  color: #c18401;
+}
+.entity.other.inherited-class {
+  color: #50a14f;
+}
+.keyword {
+  color: #a626a4;
+}
+.keyword.control {
+  color: #a626a4;
+}
+.keyword.operator {
+  color: #383a42;
+}
+.keyword.other.special-method {
+  color: #4078f2;
+}
+.keyword.other.unit {
+  color: #986801;
+}
+.storage {
+  color: #a626a4;
+}
+.storage.type.annotation,
+.storage.type.primitive {
+  color: #a626a4;
+}
+.storage.modifier.package,
+.storage.modifier.import {
+  color: #383a42;
+}
+.constant {
+  color: #986801;
+}
+.constant.variable {
+  color: #986801;
+}
+.constant.character.escape {
+  color: #0184bc;
+}
+.constant.numeric {
+  color: #986801;
+}
+.constant.other.color {
+  color: #0184bc;
+}
+.constant.other.symbol {
+  color: #0184bc;
+}
+.variable {
+  color: #e45649;
+}
+.variable.interpolation {
+  color: #ca1243;
+}
+.variable.parameter {
+  color: #383a42;
+}
+.string {
+  color: #50a14f;
+}
+.string.regexp {
+  color: #0184bc;
+}
+.string.regexp .source.ruby.embedded {
+  color: #c18401;
+}
+.string.other.link {
+  color: #e45649;
+}
+.punctuation.definition.comment {
+  color: #a0a1a7;
+}
+.punctuation.definition.method-parameters,
+.punctuation.definition.function-parameters,
+.punctuation.definition.parameters,
+.punctuation.definition.separator,
+.punctuation.definition.seperator,
+.punctuation.definition.array {
+  color: #383a42;
+}
+.punctuation.definition.heading,
+.punctuation.definition.identity {
+  color: #4078f2;
+}
+.punctuation.definition.bold {
+  color: #c18401;
+  font-weight: bold;
+}
+.punctuation.definition.italic {
+  color: #a626a4;
+  font-style: italic;
+}
+.punctuation.section.embedded {
+  color: #ca1243;
+}
+.punctuation.section.method,
+.punctuation.section.class,
+.punctuation.section.inner-class {
+  color: #383a42;
+}
+.support.class {
+  color: #c18401;
+}
+.support.type {
+  color: #0184bc;
+}
+.support.function {
+  color: #0184bc;
+}
+.support.function.any-method {
+  color: #4078f2;
+}
+.entity.name.function {
+  color: #4078f2;
+}
+.entity.name.class,
+.entity.name.type.class {
+  color: #c18401;
+}
+.entity.name.section {
+  color: #4078f2;
+}
+.entity.name.tag {
+  color: #e45649;
+}
+.entity.other.attribute-name {
+  color: #986801;
+}
+.entity.other.attribute-name.id {
+  color: #4078f2;
+}
+.meta.class {
+  color: #c18401;
+}
+.meta.class.body {
+  color: #383a42;
+}
+.meta.method-call,
+.meta.method {
+  color: #383a42;
+}
+.meta.definition.variable {
+  color: #e45649;
+}
+.meta.link {
+  color: #986801;
+}
+.meta.require {
+  color: #4078f2;
+}
+.meta.selector {
+  color: #a626a4;
+}
+.meta.separator {
+  background-color: #373b41;
+  color: #383a42;
+}
+.meta.tag {
+  color: #383a42;
+}
+.underline {
+  text-decoration: underline;
+}
+.none {
+  color: #383a42;
+}
+.invalid.deprecated {
+  color: #000000 !important;
+  background-color: #f2a60d !important;
+}
+.invalid.illegal {
+  color: #ffffff !important;
+  background-color: #ff1414 !important;
+}
+.markup.bold {
+  color: #986801;
+  font-weight: bold;
+}
+.markup.changed {
+  color: #a626a4;
+}
+.markup.deleted {
+  color: #e45649;
+}
+.markup.italic {
+  color: #a626a4;
+  font-style: italic;
+}
+.markup.heading {
+  color: #e45649;
+}
+.markup.heading .punctuation.definition.heading {
+  color: #4078f2;
+}
+.markup.link {
+  color: #a626a4;
+}
+.markup.inserted {
+  color: #50a14f;
+}
+.markup.quote {
+  color: #986801;
+}
+.markup.raw {
+  color: #50a14f;
+}
+.source.cs .keyword.operator {
+  color: #a626a4;
+}
+.source.css .property-name,
+.source.css .property-value {
+  color: #696c77;
+}
+.source.css .property-name.support,
+.source.css .property-value.support {
+  color: #383a42;
+}
+.source.gfm .markup {
+  -webkit-font-smoothing: auto;
+}
+.source.gfm .link .entity {
+  color: #4078f2;
+}
+.source.ini .keyword.other.definition.ini {
+  color: #e45649;
+}
+.source.java .storage.modifier.import {
+  color: #c18401;
+}
+.source.java .storage.type {
+  color: #c18401;
+}
+.source.java-properties .meta.key-pair {
+  color: #e45649;
+}
+.source.java-properties .meta.key-pair > .punctuation {
+  color: #383a42;
+}
+.source.js .keyword.operator {
+  color: #0184bc;
+}
+.source.js .keyword.operator.delete,
+.source.js .keyword.operator.in,
+.source.js .keyword.operator.of,
+.source.js .keyword.operator.instanceof,
+.source.js .keyword.operator.new,
+.source.js .keyword.operator.typeof,
+.source.js .keyword.operator.void {
+  color: #a626a4;
+}
+.source.json .meta.structure.dictionary.json > .string.quoted.json {
+  color: #e45649;
+}
+.source.json .meta.structure.dictionary.json > .string.quoted.json > .punctuation.string {
+  color: #e45649;
+}
+.source.json .meta.structure.dictionary.json > .value.json > .string.quoted.json,
+.source.json .meta.structure.array.json > .value.json > .string.quoted.json,
+.source.json .meta.structure.dictionary.json > .value.json > .string.quoted.json > .punctuation,
+.source.json .meta.structure.array.json > .value.json > .string.quoted.json > .punctuation {
+  color: #50a14f;
+}
+.source.json .meta.structure.dictionary.json > .constant.language.json,
+.source.json .meta.structure.array.json > .constant.language.json {
+  color: #0184bc;
+}
+.source.ruby .constant.other.symbol > .punctuation {
+  color: inherit;
+}
+.source.python .keyword.operator.logical.python {
+  color: #a626a4;
+}
+.source.python .variable.parameter {
+  color: #986801;
+}
+</style>
+  </head>
+  <body class='markdown-preview'><h1 id="self-driving-car-engineer-project-2-traffic-sign-recognition">Self Driving Car Engineer Project 2 - Traffic Sign Recognition</h1>
+<h2 id="benjamin-s-llner-27-apr-2017">Benjamin Söllner, 27 Apr 2017</h2>
+<hr>
+<p><img src="H:\Dokumente\GitHub\CarND_02_TrafficSignClassifier\project_carnd_2_traffic_sign_recognition_400.png" alt="Fun Project Header Image"></p>
+<hr>
+<p>The goals / steps of this project are the following:</p>
+<ul>
+<li>Load the data set (see below for links to the project data set)</li>
+<li>Explore, summarize and visualize the data set</li>
+<li>Design, train and test a model architecture</li>
+<li>Use the model to make predictions on new images</li>
+<li>Analyze the softmax probabilities of the new images</li>
+<li>Summarize the results with a written report</li>
+</ul>
+<h2 id="rubric-points">Rubric Points</h2>
+<p>Here I will consider the <a href="https://review.udacity.com/#!/rubrics/481/view">rubric points</a> individually and describe how I addressed each point in my implementation.  </p>
+<h3 id="writeup-readme">Writeup / README</h3>
+<p><strong>1. Provide a Writeup that includes all the rubric points and how you addressed each one. You can submit your writeup as markdown or pdf. You can use this template as a guide for writing the report. The submission includes the project code.</strong></p>
+<p>You&#39;re reading it! and here is a link to my <a href="https://github.com/benjaminsoellner/CarND_02_TrafficSignClassifier/blob/master/Traffic_Sign_Classifier.ipynb">project code</a></p>
+<h3 id="data-set-summary-exploration">Data Set Summary &amp; Exploration</h3>
+<p><strong>1. Provide a basic summary of the data set. In the code, the analysis should be done using python, numpy and/or pandas methods rather than hardcoding results manually.</strong></p>
+<p>I used the pandas library to calculate summary statistics of the traffic
+signs data set:</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>Number&nbsp;of&nbsp;training&nbsp;examples&nbsp;=&nbsp;34799</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>Number&nbsp;of&nbsp;validation&nbsp;examples&nbsp;=&nbsp;4410</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>Number&nbsp;of&nbsp;testing&nbsp;examples&nbsp;=&nbsp;12630</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>Image&nbsp;data&nbsp;shape&nbsp;=&nbsp;(32,&nbsp;32)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>Number&nbsp;of&nbsp;classes&nbsp;=&nbsp;43</span></span></span></div></pre><p>Taking into consideration the pre-processing techniques additional data
+was generated in the training set so in total <code>86430</code> images were trained.</p>
+<p><strong>2. Include an exploratory visualization of the dataset.</strong></p>
+<p>The following bar chart contains the number of samples for each class /
+label. The class with the highest number of samples has about 10x as many
+instances as the class with the lowest number of samples.</p>
+<p><img src="H:\Dokumente\GitHub\CarND_02_TrafficSignClassifier\writeup\explorative_class_distrib.png" alt="Bar chart showing class distribution"></p>
+<p>Below, find example images for each class. The images were chosen by
+selecting the images with highest contrast. As contrast metric, the
+standard deviation of the distribution of grayscale-values in the
+image was used, with a high standard deviation representing high contrast.</p>
+<p><img src="H:\Dokumente\GitHub\CarND_02_TrafficSignClassifier\writeup\explorative_class_images.png" alt="Prototype images for each class"></p>
+<h2 id="design-and-test-a-model-architecture">Design and Test a Model Architecture</h2>
+<p><strong>1. Describe how you preprocessed the image data. What techniques were
+chosen and why did you choose these techniques? Consider including images
+showing the output of each preprocessing technique. Pre-processing refers to
+techniques such as converting to grayscale, normalization, etc.</strong> (optional:
+As described in the &quot;Stand Out Suggestions&quot; part of the rubric, if you
+generated additional data for training, describe why you decided to generate
+additional data, how you generated the data, and provide example images of
+the additional data. Then describe the characteristics of the augmented
+training set like number of images in the set, number of images for each
+class, etc.)</p>
+<p>The data was pre-processed in the following fashion:</p>
+<ul>
+<li>Images were converted to gray-scale by using the <code>cv2.cvtColor(x, cv2.COLOR_RGB2GRAY)</code> function</li>
+<li>Images were normalized to posess zero mean &amp; standard-deviation 1 (<code>x-128/128</code>).</li>
+<li>In order to achieve lower bias of the training algorithm towards one
+class or another, the training set was &quot;equalized&quot; in order to contain
+the same number of images for each class. For the classes with lower
+number of samples, values were picked multiple times at random (with
+replacement) and added to the training set. The additional images
+were not modified and therefore could end up multiple times in the
+training set. A potential improvement for the algorithm would be
+to add distortions, translations or slight re-scaling to these images.</li>
+</ul>
+<p><strong>2. Describe what your final model architecture looks like including model
+type, layers, layer sizes, connectivity, etc.) Consider including a diagram
+and/or table describing the final model.</strong></p>
+<p>My final model consisted of the following layers:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Layer</th>
+<th style="text-align:center">Output Dim.</th>
+<th style="text-align:center">Additional Settings</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Input</td>
+<td style="text-align:center">32x32x1</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Convolution 5x5</td>
+<td style="text-align:center">28x28x12</td>
+<td style="text-align:center">1x1 stride, valid padding</td>
+</tr>
+<tr>
+<td style="text-align:center">ReLU</td>
+<td style="text-align:center">28x28x12</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Max Pooling</td>
+<td style="text-align:center">14x14x12</td>
+<td style="text-align:center">2x2x1 stride, valid padding</td>
+</tr>
+<tr>
+<td style="text-align:center">Convolution 5x5</td>
+<td style="text-align:center">10x10x32</td>
+<td style="text-align:center">1x1 stride, valid padding</td>
+</tr>
+<tr>
+<td style="text-align:center">ReLU</td>
+<td style="text-align:center">10x10x32</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Max Pooling</td>
+<td style="text-align:center">5x5x32</td>
+<td style="text-align:center">2x2x1 stride, valid padding</td>
+</tr>
+<tr>
+<td style="text-align:center">Flatten</td>
+<td style="text-align:center">800</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Fully connected</td>
+<td style="text-align:center">400</td>
+<td style="text-align:center">dropout trained with <code>keep_prob=0.75</code></td>
+</tr>
+<tr>
+<td style="text-align:center">ReLu</td>
+<td style="text-align:center">400</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Fully connected</td>
+<td style="text-align:center">240</td>
+<td style="text-align:center">dropout trained with <code>keep_prob=0.75</code></td>
+</tr>
+<tr>
+<td style="text-align:center">ReLu</td>
+<td style="text-align:center">240</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Fully connected</td>
+<td style="text-align:center">166</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">ReLu</td>
+<td style="text-align:center">166</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Fully connected</td>
+<td style="text-align:center">43 (number of classes)</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">ReLu</td>
+<td style="text-align:center">43</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Softmax</td>
+<td style="text-align:center">43 (one-hot encoded)</td>
+<td style="text-align:center"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>3. Describe how you trained your model. The discussion can include the type
+of optimizer, the batch size, number of epochs and any hyperparameters such
+as learning rate.</strong></p>
+<ul>
+<li>The optimized cost function was the reduce-mean of the cross-entropy
+between the predicted one-hot-encoded values and the one-hot encoded values
+of the training set
+(<code>tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits(...))</code>)</li>
+<li>As an optimizer the <code>tf.nn.AdamOptimizer(...)</code> was chosen, a stochastic
+version of Gradient Descent</li>
+<li>The model was trained for 10 Epochs with a learning rate of 0.001 and a
+batch size of 128. These hyperparameters were kept from the
+LeNet-architecture.</li>
+</ul>
+<p><strong>4. Describe the approach taken for finding a solution and getting the
+validation set accuracy to be at least 0.93. Include in the discussion the
+results on the training, validation and test sets and where in the code these
+were calculated.</strong> Your approach may have been an iterative process, in which
+case, outline the steps you took to get to the final solution and why you
+chose those steps. Perhaps your solution involved an already well known
+implementation or architecture. In this case, discuss why you think the
+architecture is suitable for the current problem.</p>
+<p>My final model results were:</p>
+<ul>
+<li>training set accuracy of <code>0.998</code></li>
+<li>validation set accuracy of <code>0.956</code> (F1-score: <code>0.955</code>)</li>
+<li>test set accuracy of <code>0.925</code> (F1-score: <code>0.926</code>)</li>
+</ul>
+<p>The F1-score was calculated as a weighted average across all classes taking
+into consideration the number of instances in each class.</p>
+<p>Using the confusion matrix, we can also use at which classes get often
+mixed up with each other. We can see, that especially different speed
+limits and different &quot;caution&quot; sings get mixed up (*). My assumption is that
+the neural network does not stike a very good balance between recognizing
+the &quot;big picture&quot; first (whether a sign is a caution sign, i.e., triangular
+or a speed limit sign etc.) and then using a higher level of detail to
+analyze the center of such a &quot;super-class&quot; of traffic signs.</p>
+<p>During design of the model, the following steps were implemented/considered:</p>
+<ol>
+<li>Started with the LeNet architecture from the lab and achieved validation
+accuracy of ca. 0.89</li>
+<li>Added grayscale &amp; normalization pre-processing and achieved validation
+accuracy of 0.90</li>
+<li>Added double-depth of the last layer increased training accuracy (0.99)
+but did not increase validation accuracy (0.90) - we were overfitting</li>
+<li>Added dropout before the final classification layer with
+<code>keep_prob=0.8</code>. This led to a nice increase of validation accuracy to 0.93</li>
+<li>Decreasing <code>keep_prob</code> to <code>0.6</code> did not provide any noticable change.</li>
+<li>An idea to only use contrast-rich images for training led to massive
+overfitting (training accuracy: 0.84, validation accuracy: 0.57), probably
+in part because high-contrast images are sometimes so under-/overexposed due
+to contrast with the background that the actual sign is barely recognizable
+(see sample images).</li>
+<li>Increasing the depth of the initial convolution layer and adding two
+fully connected layer to narrow down results, one of them also with
+dropout (now both dropout layers with <code>keep_prob=0.75</code>) led to the
+current result. The rationale for this improvement was the realization that
+traffic signs should be much more complex than the handwritten numbers
+from the LeNet-dataset and should contain many more detailed features that
+could be recognized by a higher output depth of the convolutional layer.</li>
+</ol>
+<p>Here is a visualization of the most problematic classes (labeled) that the
+model seems to be having most trouble with in the validation and test set.
+Triangle-shaped traffic signs with rather small icons in the center (e.g.,
+pedestrian, traffic signal, curve, double curve) seem consistently
+problematic.</p>
+<p><img src="H:\Dokumente\GitHub\CarND_02_TrafficSignClassifier\writeup\evaluation_validation.png" alt="Validation Set F1/precision/recall of classes"></p>
+<p><img src="H:\Dokumente\GitHub\CarND_02_TrafficSignClassifier\writeup\evaluation_test.png" alt="Test Set F1/precision/recall of classes"></p>
+<p><strong>Idea for future work:</strong> Perhaps a very different model architecture, where
+one essentially uses two &quot;sub-networks&quot;, one running on a low-resolution
+version of the whole image, one running on a fine-grained version of the
+image&#39;s center-area, could do the job. Both &quot;sub-networks&quot; could then be
+interconnected via one or more fully-connected layers. The coarse-grained
+sub-network could also take into consideration color perception since some
+of the mis-classifications mix up different super-classes (e.g. priority
+road and roundabout), that could be easily distinguishable by color. (**)</p>
+<p>For the validation set we get:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Rank</th>
+<th style="text-align:center">Actual class</th>
+<th style="text-align:center">Predicted class</th>
+<th style="text-align:center">Number of wrong predictions</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">Roundabout mandatory</td>
+<td style="text-align:center">Priority road</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">(**)</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">Speed limit (80km/h)</td>
+<td style="text-align:center">Speed limit (50km/h)</td>
+<td style="text-align:center">9</td>
+<td style="text-align:center">(*)</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">Double curve</td>
+<td style="text-align:center">Dangerous curve to the left</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">(*)</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">Double curve</td>
+<td style="text-align:center">Wild animals crossing</td>
+<td style="text-align:center">7</td>
+<td style="text-align:center">(*)</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">Bumpy road</td>
+<td style="text-align:center">Bicycles crossing</td>
+<td style="text-align:center">6</td>
+<td style="text-align:center">(*)</td>
+</tr>
+</tbody>
+</table>
+<p>For the test set we get:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Rank</th>
+<th style="text-align:center">Actual class</th>
+<th style="text-align:center">Predicted class</th>
+<th style="text-align:center">Number of wrong predictions</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">1</td>
+<td style="text-align:center">Keep right</td>
+<td style="text-align:center">Speed limit (30km/h)</td>
+<td style="text-align:center">32</td>
+<td style="text-align:center">(*)</td>
+</tr>
+<tr>
+<td style="text-align:center">2</td>
+<td style="text-align:center">Speed limit (100km/h)</td>
+<td style="text-align:center">Speed limit (120km/h)</td>
+<td style="text-align:center">30</td>
+<td style="text-align:center">(*)</td>
+</tr>
+<tr>
+<td style="text-align:center">3</td>
+<td style="text-align:center">Double curve</td>
+<td style="text-align:center">Slippery road</td>
+<td style="text-align:center">29</td>
+<td style="text-align:center">(*)</td>
+</tr>
+<tr>
+<td style="text-align:center">4</td>
+<td style="text-align:center">Road narrows on the right</td>
+<td style="text-align:center">Bicycles crossing</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">(*)</td>
+</tr>
+<tr>
+<td style="text-align:center">5</td>
+<td style="text-align:center">Road work</td>
+<td style="text-align:center">Right-of-way at the next intersection</td>
+<td style="text-align:center">21</td>
+<td style="text-align:center">(**)</td>
+</tr>
+</tbody>
+</table>
+<h3 id="test-a-model-on-new-images">Test a Model on New Images</h3>
+<p><strong>1. Choose five German traffic signs found on the web and provide them in the report. For each image, discuss what quality or qualities might be difficult to classify.</strong></p>
+<p>Here are five German traffic signs that I found on the web (<a href="https://github.com/benjaminsoellner/CarND_02_TrafficSignClassifier/blob/master/LICENSE.md">license</a>):</p>
+<p><img src="H:\Dokumente\GitHub\CarND_02_TrafficSignClassifier\writeup\german_signs.png" alt="Five german traffic signs"></p>
+<p>The second (29) and the last (28) images could be especially hard to classify
+since especially the details in the center are very hard to recognize because
+of the low resolution.</p>
+<p><strong>2. Discuss the model&#39;s predictions on these new traffic signs and compare the results to predicting on the test set. At a minimum, discuss what the predictions were, the accuracy on these new predictions, and compare the accuracy to the accuracy on the test set.</strong> (optional: Discuss the results in more detail as described in the &quot;Stand Out Suggestions&quot; part of the rubric).</p>
+<p>Here are the results of the prediction:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Image class</th>
+<th style="text-align:center">Predicted class</th>
+<th style="text-align:center"></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">Stop</td>
+<td style="text-align:center">Stop</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Bicycles crossing</td>
+<td style="text-align:center">Right-of-way at the next intersection</td>
+<td style="text-align:center">(*)</td>
+</tr>
+<tr>
+<td style="text-align:center">No entry</td>
+<td style="text-align:center">No entry</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Right-of-way at the next intersection</td>
+<td style="text-align:center">Right-of-way at the next intersection</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Road work</td>
+<td style="text-align:center">Road work</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Children crossing</td>
+<td style="text-align:center">Right-of-way at the next intersection</td>
+<td style="text-align:center">(*)</td>
+</tr>
+</tbody>
+</table>
+<p>The model was able to correctly guess 4 of the 6 traffic signs, which gives
+an accuracy of 0.80. This is a much lower accuracy than the test set.
+However, 6 samples are very few to make a valid comparison, especially
+since the 6 samples contained some very hard-to-recognize signs based on
+the pixel resolution. (*)</p>
+<p><strong>3. Describe how certain the model is when predicting on each of the five new images by looking at the softmax probabilities for each prediction. Provide the top 5 softmax probabilities for each image along with the sign type of each probability.</strong> (optional: as described in the &quot;Stand Out Suggestions&quot; part of the rubric, visualizations can also be provided such as bar charts)</p>
+<p>The model is quite sure of its predictions. The highest softmax probability
+is always at least 4 orders of magnitude higher than any other probability,
+even for the wrongly predicted classes. See the following output from the
+algorithm:</p>
+<pre class="editor-colors lang-text"><div class="line"><span class="text plain"><span class="meta paragraph text"><span>image&nbsp;14081735536_cdd1534c34_m.jpg&nbsp;was&nbsp;14&nbsp;(Stop)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>prediction&nbsp;CORRECT</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.4512866735&nbsp;for&nbsp;14&nbsp;(Stop)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.2976378202&nbsp;for&nbsp;1&nbsp;(Speed&nbsp;limit&nbsp;(30km/h))</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.1695093513&nbsp;for&nbsp;0&nbsp;(Speed&nbsp;limit&nbsp;(20km/h))</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0698718205&nbsp;for&nbsp;8&nbsp;(Speed&nbsp;limit&nbsp;(120km/h))</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0090521844&nbsp;for&nbsp;4&nbsp;(Speed&nbsp;limit&nbsp;(70km/h))</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>image&nbsp;6986126209_52ac2b9140_m.jpg&nbsp;was&nbsp;29&nbsp;(Bicycles&nbsp;crossing)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>prediction&nbsp;INCORRECT</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.9999984503&nbsp;for&nbsp;11&nbsp;(Right-of-way&nbsp;at&nbsp;the&nbsp;next&nbsp;intersection)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000012692&nbsp;for&nbsp;30&nbsp;(Beware&nbsp;of&nbsp;ice/snow)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000002181&nbsp;for&nbsp;18&nbsp;(General&nbsp;caution)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000682&nbsp;for&nbsp;27&nbsp;(Pedestrians)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000001&nbsp;for&nbsp;26&nbsp;(Traffic&nbsp;signals)</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>image&nbsp;14603048095_ec2fb6dd6a_m.jpg&nbsp;was&nbsp;17&nbsp;(No&nbsp;entry)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>prediction&nbsp;CORRECT</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=1.0000000000&nbsp;for&nbsp;17&nbsp;(No&nbsp;entry)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000000&nbsp;for&nbsp;34&nbsp;(Turn&nbsp;left&nbsp;ahead)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000000&nbsp;for&nbsp;0&nbsp;(Speed&nbsp;limit&nbsp;(20km/h))</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000000&nbsp;for&nbsp;40&nbsp;(Roundabout&nbsp;mandatory)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000000&nbsp;for&nbsp;9&nbsp;(No&nbsp;passing)</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>image&nbsp;7187645956_cf404baf29_m.jpg&nbsp;was&nbsp;11&nbsp;(Right-of-way&nbsp;at&nbsp;the&nbsp;next&nbsp;intersection)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>prediction&nbsp;CORRECT</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=1.0000000000&nbsp;for&nbsp;11&nbsp;(Right-of-way&nbsp;at&nbsp;the&nbsp;next&nbsp;intersection)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000246&nbsp;for&nbsp;27&nbsp;(Pedestrians)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000024&nbsp;for&nbsp;30&nbsp;(Beware&nbsp;of&nbsp;ice/snow)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000001&nbsp;for&nbsp;18&nbsp;(General&nbsp;caution)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000000&nbsp;for&nbsp;20&nbsp;(Dangerous&nbsp;curve&nbsp;to&nbsp;the&nbsp;right)</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>image&nbsp;29539830960_95ce344717_m.jpg&nbsp;was&nbsp;25&nbsp;(Road&nbsp;work)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>prediction&nbsp;CORRECT</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.9999938011&nbsp;for&nbsp;25&nbsp;(Road&nbsp;work)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000051087&nbsp;for&nbsp;35&nbsp;(Ahead&nbsp;only)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000009310&nbsp;for&nbsp;29&nbsp;(Bicycles&nbsp;crossing)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000463&nbsp;for&nbsp;30&nbsp;(Beware&nbsp;of&nbsp;ice/snow)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000256&nbsp;for&nbsp;23&nbsp;(Slippery&nbsp;road)</span></span></span></div><div class="line"><span class="text plain"><span>&nbsp;</span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>image&nbsp;6840546312_a07d9c64a0_m.jpg&nbsp;was&nbsp;28&nbsp;(Children&nbsp;crossing)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>prediction&nbsp;INCORRECT</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.9999991655&nbsp;for&nbsp;11&nbsp;(Right-of-way&nbsp;at&nbsp;the&nbsp;next&nbsp;intersection)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000007351&nbsp;for&nbsp;30&nbsp;(Beware&nbsp;of&nbsp;ice/snow)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000761&nbsp;for&nbsp;23&nbsp;(Slippery&nbsp;road)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000003&nbsp;for&nbsp;16&nbsp;(Vehicles&nbsp;over&nbsp;3.5&nbsp;metric&nbsp;tons&nbsp;prohibited)</span></span></span></div><div class="line"><span class="text plain"><span class="meta paragraph text"><span>p=0.0000000000&nbsp;for&nbsp;42&nbsp;(End&nbsp;of&nbsp;no&nbsp;passing&nbsp;by&nbsp;vehicles&nbsp;over&nbsp;3.5&nbsp;metric&nbsp;tons)</span></span></span></div></pre><h3 id="-optional-visualizing-the-neural-network-see-step-4-of-the-ipython-notebook-for-more-details-">(Optional) Visualizing the Neural Network (See Step 4 of the Ipython notebook for more details)</h3>
+<p><strong>1. Discuss the visual output of your trained network&#39;s feature maps. What characteristics did the neural network use to make classifications?</strong></p>
+<p>The following shows the first and the second convolutional layer of the
+network for the &quot;no-entry sign&quot;. As you can see, the first layer extracts
+details like filled areas (e.g., Feature Map 8 &amp; 9) as well as prominent
+center lines (e.g., Feature Map 1, 5, 6, 11) while the second layer seems
+to parse details of different sections of the image.</p>
+<p>Feature Map for the first convolutional layer:</p>
+<p> <img src="H:\Dokumente\GitHub\CarND_02_TrafficSignClassifier\writeup\feature_maps_conv1.png" alt="Feature Map of First Convolutional Layer"></p>
+<p>Feature Map for the second convolutional layer:</p>
+<p> <img src="H:\Dokumente\GitHub\CarND_02_TrafficSignClassifier\writeup\feature_maps_conv2.png" alt="Feature Map of Second Convolutional Layer"></p></body>
+</html>
